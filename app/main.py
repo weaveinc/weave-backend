@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.features.uploads.router import router as uploads_router
+from app.features.images.router import router as images_router
+from app.features.render.router import router as render_router
 
 app = FastAPI(title="Weave GCS Upload API")
 
@@ -20,3 +22,6 @@ app.add_middleware(
 
 # ルーターの登録
 app.include_router(uploads_router, prefix="/v1/uploads", tags=["uploads"])
+app.include_router(images_router, prefix="/v1/images", tags=["images"])
+app.include_router(render_router, prefix="/v1/render", tags=["render"])
+
